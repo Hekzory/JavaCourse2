@@ -1,0 +1,5 @@
+program:
+  student:
+    name: "Олег"
+    last_name: "Цветков"
+    group: "ИКБО-16-22"
