@@ -1,10 +1,14 @@
-package one.tsv.task15.models;
+package one.tsv.task16.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import one.tsv.task16.dto.BankDto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -20,6 +24,8 @@ public class Bank {
     private String name;
     @Column(name="address")
     private String address;
+    @OneToMany(mappedBy = "bank")
+    private List<Card> cards = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -27,5 +33,9 @@ public class Bank {
                 "name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    public BankDto toDto() {
+        return new BankDto(id, name, address);
     }
 }
